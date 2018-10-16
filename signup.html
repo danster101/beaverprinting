@@ -69,70 +69,47 @@
       <!-- Sign Up Form -->
       <div class="row">
         <div class="col-lg-8 mb-4">
-          <form name="signUpForm" id="signUpForm" class="needs-validation" novalidate>
+          <form name="signUpForm" id="signUpForm">
             <div class="control-group form-group">
               <div class="controls">
-                <label for="validationCustom01">First Name:</label>
-                <input type="text" class="form-control" id="validationCustom01" required data-validation-required-message="Please enter your first name.">
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <p class="help-block"></p>
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" pattern="^[a-zA-Z]+$" title="Please only use letters" required />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label for="validationCustom02">Last Name:</label>
-                <input type="text" class="form-control" id="validationCustom02" required data-validation-required-message="Please enter your last name.">
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <p class="help-block"></p>
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" pattern="^[a-zA-Z]+$" title="Please only use letters" required />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label for="validationCustomUsername">Username:</label>
-                <input type="text" class="form-control" id="validationCustomUsername" required data-validation-required-message="Please enter your phone number.">
-              <div class="invalid-feedback">
-                  Please enter a valid username.
-                </div>
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Not a valid email." required />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Phone Number:</label>
-                <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-                <div class="invalid-feedback">
-                  Please enter a valid phone number.
-                </div>
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" pattern="^.{8,}$" title="Minimum of 8 characters" required />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Email Address:</label>
-                <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-                <div class="invalid-feedback">
-                  Please enter a valid email address.
-                </div>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" placeholder="XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" title="xxx-xxx-xxxx" required />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Password:</label>
-                <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password">
-                <div class="invalid-feedback">
-                  Please enter a valid password.
-                </div>
+                <label for="address">Address:</label>
+                <input type="tel" class="form-control" id="address" pattern="^[a-zA-Z0-9- ]+$" title="Please only enter letters and numbers" required />
               </div>
             </div>
               <div class="form-row">
             <div class="col-md-6 mb-3">
-              <label for="validationCustom03">City</label>
-              <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-              <div class="invalid-feedback">
-                Please provide a valid city.
-              </div>
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" required />
             </div>
             <div class="col-md-3 mb-3">
               <label>State</label>
@@ -195,11 +172,8 @@
                 </div>
             </div>
             <div class="col-md-3 mb-3">
-              <label for="validationCustom05">Zip</label>
-              <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-              <div class="invalid-feedback">
-                Please provide a valid zip.
-              </div>
+              <label for="validationCustom05">Zip (5 digits)</label>
+              <input type="text" class="form-control" id="validationCustom05" pattern="^\d{5}$" title="Please enter a 5-digit zip code" required>
             </div>
   </div>
             <div id="success"></div>
@@ -213,7 +187,7 @@
 
     </div>
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
     (function() {
       'use strict';
       window.addEventListener('load', function() {
@@ -230,7 +204,7 @@
           }, false);
         });
       }, false);
-    })();
+    })();-->
 
 
 
