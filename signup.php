@@ -29,7 +29,7 @@
         $firstName = $_POST["firstName"];
         $lastName = $_POST["lastName"];
         $email = $_POST["email"];
-        $password = $_POST["passowrd"];
+        $password = password_hash($_POST["passowrd"], PASSWORD_DEFAULT);
         $phone = $_POST["phone"];
         $address = $_POST["address"];
         $city = $_POST["city"];
@@ -43,7 +43,7 @@
           $email_err = TRUE;
         }
         else {
-          $query = "INSERT INTO siteUsers VALUES ('$firstName','$lastName', '$email','$password', '$phone', '$address', '$city', '$state', '$zip')";
+          $query = "INSERT INTO siteUsers VALUES ('$firstName','$lastName', '$email', '$phone', '$address', '$city', '$state', '$zip', '$password')";
           $result = pg_query($dbconn, $query); 
         }
       }
