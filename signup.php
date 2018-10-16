@@ -19,6 +19,36 @@
 
   <body>
 
+    <?php
+      $email_err = FALSE;
+      $firstName = $lastName = $email = $password = $phone = $address = $city = $state = $zip = "";
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $conn_string = "host=ec2-107-22-189-136.compute-1.amazonaws.com port=5432 dbname=d7blu4f8v68tqu user=ynwnecflnmfikq password=54a5bac6379cf5639d68c9a731d523edd65c930eaabc742a4c0df65d40826444";
+        $dbconn = pg_connect($conn_string);
+        
+        $firstName = $_POST["firstName"];
+        $lastName = $_POST["lastName"];
+        $email = $_POST["email"];
+        $password = $_POST["passowrd"];
+        $phone = $_POST["phone"];
+        $address = $_POST["address"];
+        $city = $_POST["city"];
+        $state = $_POST["state"];
+        $zip = $_POST["zip"];
+        
+        $check_query = "SELECT firstName WHERE email = '$email'";
+        $check_result = pg_query($dbconn, $check_query);
+        
+        if(pg_num_rows($check_result) > 0){
+          $email_err = TRUE;
+        }
+        else {
+          $query = "INSERT INTO siteUsers VALUES ('$firstName','$lastName', '$email','$password', '$phone', '$address', '$city', '$state', '$zip')";
+          $result = pg_query($dbconn, $query); 
+        }
+      }
+    ?>
+    
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -69,51 +99,51 @@
       <!-- Sign Up Form -->
       <div class="row">
         <div class="col-lg-8 mb-4">
-          <form name="signUpForm" id="signUpForm">
+          <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="signUpForm" id="signUpForm">
             <div class="control-group form-group">
               <div class="controls">
                 <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName" pattern="^[a-zA-Z]+$" title="Please only use letters" required />
+                <input type="text" class="form-control" id="firstName" name="firstName" pattern="^[a-zA-Z]+$" title="Please only use letters" required value="<?php echo $firstName; ?>" />
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName" pattern="^[a-zA-Z]+$" title="Please only use letters" required />
+                <input type="text" class="form-control" id="lastName" name="lastName" pattern="^[a-zA-Z]+$" title="Please only use letters" required value="<?php echo $lastName; ?>"/>
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label for="email">Email Address:</label>
-                <input type="email" class="form-control" id="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Not a valid email." required />
+                <label for="email"><?php if($email_err){echo "This email address is already taken!";} ?> Email Address:</label>
+                <input type="email" class="form-control" id="email" name="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Not a valid email." required value="<?php echo $email; ?>"/>
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" pattern="^.{8,}$" title="Minimum of 8 characters" required />
+                <input type="password" class="form-control" id="password" name="password" pattern="^.{8,}$" title="Minimum of 8 characters" required value="<?php echo $password; ?>"/>
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label for="phone">Phone Number:</label>
-                <input type="tel" class="form-control" id="phone" placeholder="XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" title="xxx-xxx-xxxx" required />
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" title="xxx-xxx-xxxx" required value="<?php echo $phone; ?>"/>
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label for="address">Address:</label>
-                <input type="tel" class="form-control" id="address" pattern="^[a-zA-Z0-9- ]+$" title="Please only enter letters and numbers" required />
+                <input type="tel" class="form-control" id="address" name="address" pattern="^[a-zA-Z0-9- ]+$" title="Please only enter letters and numbers" required value="<?php echo $address; ?>"/>
               </div>
             </div>
               <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="city">City</label>
-              <input type="text" class="form-control" id="city" required />
+              <input type="text" class="form-control" id="city" name="city" required value="<?php echo $city; ?>"/>
             </div>
             <div class="col-md-3 mb-3">
               <label>State</label>
-              <select class="custom-select" required>
+              <select class="custom-select" name="state" required>
                 <option value="">Select</option>
                 <option value="Alabama">AL</option>
                 <option value="Alaska">AK</option>
@@ -167,13 +197,10 @@
                 <option value="Wisconsin">WI</option>
                 <option value="Wyoming">WY</option>
               </select>
-                <div class="invalid-feedback">
-                  Please select a state.
-                </div>
             </div>
             <div class="col-md-3 mb-3">
               <label for="validationCustom05">Zip (5 digits)</label>
-              <input type="text" class="form-control" id="validationCustom05" pattern="^\d{5}$" title="Please enter a 5-digit zip code" required>
+              <input type="text" class="form-control" id="zip" name="zip" pattern="^\d{5}$" title="Please enter a 5-digit zip code" required value="<?php echo $zip; ?>">
             </div>
   </div>
             <div id="success"></div>
