@@ -23,28 +23,39 @@
       $email_err = FALSE;
       $firstName = $lastName = $email = $password = $phone = $address = $city = $state = $zip = "";
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $conn_string = "host=ec2-107-22-189-136.compute-1.amazonaws.com port=5432 dbname=d7blu4f8v68tqu user=ynwnecflnmfikq password=54a5bac6379cf5639d68c9a731d523edd65c930eaabc742a4c0df65d40826444";
+        $conn_string = "sslmode=require host=ec2-107-22-189-136.compute-1.amazonaws.com port=5432 dbname=d7blu4f8v68tqu user=ynwnecflnmfikq password=54a5bac6379cf5639d68c9a731d523edd65c930eaabc742a4c0df65d40826444";
         $dbconn = pg_connect($conn_string);
         
-        $firstName = $_POST["firstName"];
-        $lastName = $_POST["lastName"];
-        $email = $_POST["email"];
-        $password = password_hash($_POST["passowrd"], PASSWORD_DEFAULT);
-        $phone = $_POST["phone"];
-        $address = $_POST["address"];
-        $city = $_POST["city"];
-        $state = $_POST["state"];
-        $zip = $_POST["zip"];
+        if(!$dbconn){echo "FAILURE";}
         
-        $check_query = "SELECT firstName WHERE email = '$email'";
+        $firstName = pg_escape_string($dbconn, $_POST["firstName"]);
+        $lastName = pg_escape_string($dbconn, $_POST["lastName"]);
+        $email = pg_escape_string($dbconn, $_POST["email"]);
+        $password = pg_escape_string($dbconn, password_hash($_POST["passowrd"], PASSWORD_DEFAULT));
+        $phone = pg_escape_string($dbconn, $_POST["phone"]);
+        $address = pg_escape_string($dbconn, $_POST["address"]);
+        $city = pg_escape_string($dbconn, $_POST["city"]);
+        $state = pg_escape_string($dbconn, $_POST["state"]);
+        $zip = pg_escape_string($dbconn, $_POST["zip"]);
+        
+        $check_query = "SELECT * FROM \"siteUsers\" WHERE email = '{$email}'";
         $check_result = pg_query($dbconn, $check_query);
+        
+        $status = pg_result_status($check_result);
+        if($status == PGSQL_FATAL_ERROR)
+          echo "status fatal error";
+        if($status == PGSQL_BAD_RESPONSE)
+          echo "bad response";
+        
         
         if(pg_num_rows($check_result) > 0){
           $email_err = TRUE;
         }
         else {
-          $query = "INSERT INTO siteUsers VALUES ('$firstName','$lastName', '$email', '$phone', '$address', '$city', '$state', '$zip', '$password')";
-          $result = pg_query($dbconn, $query); 
+          $query = "INSERT INTO \"siteUsers\" {firstName, lastName, email, phone, address, city, state, zip, password} VALUES ('$firstName','$lastName', '$email', '$phone', '$address', '$city', '$state', '$zip', '$password')";
+          $result = pg_query($dbconn, $query);
+          if(!$query){echo "failure on insert query";}
+          $firstName = $lastName = $email = $password = $phone = $address = $city = $state = $zip = "";
         }
       }
     ?>
@@ -114,7 +125,7 @@
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label for="email"><?php if($email_err){echo "This email address is already taken!";} ?> Email Address:</label>
+                <label for="email"><?php if($email_err){echo "This Email Address is Already Taken - Try a New ";} ?>Email Address:</label>
                 <input type="email" class="form-control" id="email" name="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Not a valid email." required value="<?php echo $email; ?>"/>
               </div>
             </div>
