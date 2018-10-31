@@ -20,6 +20,93 @@
   <body>
 
     <?php
+
+              /**
+         * This example shows settings to use when sending via Google's Gmail servers.
+         * This uses traditional id & password authentication - look at the gmail_xoauth.phps
+         * example to see how to use XOAUTH2.
+         * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
+         */
+        //Import PHPMailer classes into the global namespace
+        use PHPMailer\PHPMailer\PHPMailer;
+        
+
+
+        $msg = '';
+
+        if (array_key_exists('email', $_POST)) {
+            date_default_timezone_set('Etc/UTC');
+
+
+            require 'vendor/autoload.php';
+            //Create a new PHPMailer instance
+            $mail = new PHPMailer;
+            //Tell PHPMailer to use SMTP
+            $mail->isSMTP();
+            //Enable SMTP debugging
+            // 0 = off (for production use)
+            // 1 = client messages
+            // 2 = client and server messages
+            //Set the hostname of the mail server
+            $mail->Host = 'smtp.gmail.com';
+            // use
+            // $mail->Host = gethostbyname('smtp.gmail.com');
+            // if your network does not support SMTP over IPv6
+            //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+            $mail->Port = 587;
+            //Set the encryption system to use - ssl (deprecated) or tls
+            $mail->SMTPSecure = 'tls';
+            //Whether to use SMTP authentication
+            $mail->SMTPAuth = true;
+            //Username to use for SMTP authentication - use full email address for gmail
+            $mail->Username = "beaverprintingcompany@gmail.com";
+            //Password to use for SMTP authentication
+            $mail->Password = "DamGoodPassword123.";
+            //Set who the message is to be sent from
+            $mail->setFrom('beaverprintingcompany@gmail.com', 'Admin');
+
+            //Set an alternative reply-to address
+            //$mail->addReplyTo('replyto@example.com', 'First Last');
+            //Set who the message is to be sent to
+            $mail->addAddress($_POST['email']);
+
+
+                if ($mail->addReplyTo('beaverprintingcompany@gmail.com', 'Admin')) {
+                    $mail->Subject = 'BeaverPrinting Signup Confirmation';
+                    //Keep it simple - don't use HTML
+                    $mail->isHTML(false);
+                    //Build a simple message body
+                    $mail->Body = <<<EOT
+Dear {$_POST['firstName']},
+
+
+This email is a confirmation that your BeaverPrinting account has been successfully created.
+
+Best,
+
+The BeaverPrinting Team
+EOT;
+
+        if (!$mail->send()) {
+            //The reason for failing to send will be in $mail->ErrorInfo
+            //but you shouldn't display errors to users - process the error, log it on your server.
+            $msg = 'Sorry, something went wrong. Please try again later.';
+        } else {
+            $msg = 'You have successfully signed up for BeaverPrinting. A confirmation has been sent to your email address.';
+        }
+         } else {
+        $msg = 'Oops, it appears the email address you provided was invalid.';
+        }
+}
+
+
+
+
+
+
+
+
+
       $email_err = FALSE;
       $firstName = $lastName = $email = $password = $phone = $address = $city = $state = $zip = "";
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,7 +118,7 @@
         $firstName = pg_escape_string($dbconn, $_POST["firstName"]);
         $lastName = pg_escape_string($dbconn, $_POST["lastName"]);
         $email = pg_escape_string($dbconn, $_POST["email"]);
-        $password = pg_escape_string($dbconn, password_hash($_POST["passowrd"], PASSWORD_DEFAULT));
+        $password = pg_escape_string($dbconn, password_hash($_POST["password"], PASSWORD_DEFAULT));
         $phone = pg_escape_string($dbconn, $_POST["phone"]);
         $address = pg_escape_string($dbconn, $_POST["address"]);
         $city = pg_escape_string($dbconn, $_POST["city"]);
@@ -83,9 +170,6 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="signup.html">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pricing.php">Pricing</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
