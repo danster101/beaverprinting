@@ -9,7 +9,6 @@
     <meta name="author" content="Danial Hussain, Sam Medlin, Daniel Wang">
 
     <title>Beaver Printing and Prototyping</title>
-
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,13 +40,13 @@
             <li class="nav-item">
               <a class="nav-link" href="login.html">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="signup.html">Sign Up</a>
             </li>
 			<li class="nav-item">
               <a class="nav-link" href="pricing.html">Pricing</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
           </ul>
@@ -59,7 +58,7 @@
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Contact Us
+      <h1 class="mt-4 mb-3">Sign Up
         <!-- <small>Subheading</small> -->
       </h1>
 
@@ -67,60 +66,33 @@
         <li class="breadcrumb-item">
           <a href="index.html">Home</a>
         </li>
-        <li class="breadcrumb-item active">Contact Us</li>
+        <li class="breadcrumb-item active">Sign Up</li>
       </ol>
 
-      <!-- Content Row -->
-      <div class="row">
-        <!-- Map Column -->
-        <div class="col-lg-8 mb-4">
-          <!-- Embedded Google Map -->
-          <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.6637063595244!2d-78.51303458416291!3d38.031618779713554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b3865b677c5335%3A0x6490aa88130497ec!2sRice+Hall+Information+Technology+Engineering+Building%2C+85+Engineer&#39;s+Way%2C+Charlottesville%2C+VA+22903!5e0!3m2!1sen!2sus!4v1537807542170"></iframe>
-        </div>
-        <!-- Contact Details Column -->
-        <div class="col-lg-4 mb-4">
-          <h3>Contact Details</h3>
-          <p>
-            85 Engineer's Way
-            <br>Charlottesville, VA 22904
-            <br>
-          </p>
-          <p>
-            <abbr title="Phone">P</abbr>: (703) 268-0971
-          </p>
-          <p>
-            <abbr title="Email">E</abbr>:
-            <a href="mailto:danial@virginia.edu">danial@virginia.edu
-            </a>
-          </p>
-          <p>
-            <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
-          </p>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <!-- Contact Form -->
-      <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+      <!-- Sign Up Form -->
       <div class="row">
         <div class="col-lg-8 mb-4">
-          <h3>Send us a Message</h3>
-          <form name="sentMessage" id="contactForm" novalidate>
+          <form name="signUpForm" id="signUpForm" novalidate>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Full Name:</label>
-                <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                <label>First Name:</label>
+                <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your first name.">
                 <p class="help-block"></p>
               </div>
             </div>
-            <!--
+            <div class="control-group form-group">
+              <div class="controls">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your last name.">
+                <p class="help-block"></p>
+              </div>
+            </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label>Phone Number:</label>
                 <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
               </div>
             </div>
-            -->
             <div class="control-group form-group">
               <div class="controls">
                 <label>Email Address:</label>
@@ -129,13 +101,13 @@
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Message:</label>
-                <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                <label>Password:</label>
+                <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password">
               </div>
             </div>
             <div id="success"></div>
             <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+            <button type="submit" class="btn btn-primary" id="signUpButton">Sign Up</button>
           </form>
         </div>
 
