@@ -42,13 +42,13 @@
               <a class="nav-link" href="login.html">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="signup.html">Sign Up</a>
+              <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
 			<li class="nav-item active">
               <a class="nav-link" href="pricing.php">Pricing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
           </ul>
         </div>

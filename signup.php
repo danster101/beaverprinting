@@ -172,6 +172,9 @@ EOT;
               <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="pricing.php">Pricing</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
           </ul>
