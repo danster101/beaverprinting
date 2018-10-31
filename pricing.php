@@ -81,7 +81,7 @@
 	     </h1>
 		   <img class="d-block w-100" src="images/Capture.JPG" alt="Italian Trulli">
 
-      
+      <br>
       <!-- Marketing Icons Section -->
       <div class="row">
         <div class="col-lg-4 mb-4">
@@ -118,6 +118,42 @@
           </div>
         </div>
       </div>
+
+ <img class="d-block w-100" src="images/Currency.JPG" alt="Italian Trulli">
+ <br> <br> <br> 
+
+      <form action="converter.php" method="post">
+      <div style="text-align:center;">
+      <h1>Bitcoin Currency Converter</h1><br>
+        <label for="amount">Amount:</label>
+        <input type="text"name="amount" id="amount">
+
+        &nbsp;&nbsp;&nbsp;
+        <label for="currency">Currency:</label>
+        
+        <select name="currency" class="btn btn-primary" id="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="CNY">CNY</option>
+          <option value="JPY">JPY</option>
+          <option value="SGD">SGD</option>
+          <option value="HKD">HKD</option>
+          <option value="CAD">CAD</option>
+          <option value="AUD">AUD</option>
+          <option value="NZD">NZD</option>
+          <option value="GBP">GBP</option>
+          <option value="DKK">DKK</option>
+          <option value="SEK">SEK</option>
+          <option value="BRL">BRL</option>
+          <option value="CHF">CHF</option>
+          <option value="RUB">RUB</option>
+          <option value="SLL">SLL</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" class="btn btn-primary" </a>
+      </div>
+      </form>
+       <br> <br> <br>
 
 	  
 
