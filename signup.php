@@ -85,6 +85,9 @@
               <a class="nav-link" href="signup.html">Sign Up</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="pricing.php">Pricing</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
             </li>
           </ul>
