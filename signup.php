@@ -240,7 +240,7 @@ EOT;
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" name="city" required value="<?php echo $city; ?>"/>
+                <input type="text" class="form-control" id="city" name="city" pattern="^[a-zA-Z0-9- ]+$" required value="<?php echo $city; ?>"/>
               </div>
               <div class="col-md-3 mb-3">
                 <label>State</label>
