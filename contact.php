@@ -64,7 +64,7 @@
             //Username to use for SMTP authentication - use full email address for gmail
             $mail->Username = "beaverprintingcompany@gmail.com";
             //Password to use for SMTP authentication
-            $mail->Password = "DamGoodPassword123.";
+            $mail->Password = "BeaverPrinting123.";
             //Set who the message is to be sent from
             $mail->setFrom('beaverprintingcompany@gmail.com', 'Admin');
 
