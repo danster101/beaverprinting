@@ -25,7 +25,7 @@
         <form action="https://test.bitpay.com/checkout" method="post" >
   <input type="hidden" name="action" value="checkout" />
   <input type="hidden" name="posData" value="" />
-  <input type="hidden" name="data" value="dVuVk46xLBxf1jb0U15vhaadJbkat7lDauyWEPRiYr6bwVUMwckD7D+iiyCOf5yek++fx2zPdtFFZ8in/WX2czGGWFkT5NznsQbB2wo/WfvKkuzPvbjsPhP9u8OG4+KZvlCie401/8afBZNOCAJtURqxi4K4PeT/gP/iiQELRyjZAkQQEwvxk+FqK96ccSXoDEflyWVgiS1OK23qccdlQA==" />
+  <input type="hidden" name="data" value="dVuVk46xLBxf1jb0U15vhaadJbkat7lDauyWEPRiYr6bwVUMwckD7D+iiyCOf5yemaw9r5LzYh2z8A4oFEXncODOCuDAvGQfiy1d5+Y2T6m3lp6QfFVRKhPjiS3OkrO2nCDXI7gQNR8TkL48k1kn/sJlHoOLLbXK83b6IScVLHjO+J0vNGLrOqdWSFAXeXCDSEVQUjqx9eWEbXWO+uhSTIqeuf92BW2qkUwwGJrbE2/9dSJaaod+jaa3DD6mQhSYMYF0xiO46fd2d7iN3WQ8ZjuMfzf8esA6ojhug1jDs9o=" />
   <input type="image" img class="d-block w-100" src="https://test.bitpay.com/cdn/en_US/bp-btn-pay-currencies.svg" name="submit" style="width:210px;" alt="BitPay, the easy way to pay with bitcoins." >
 </form>
         </form>
