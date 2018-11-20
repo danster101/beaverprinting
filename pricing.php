@@ -50,6 +50,9 @@
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="member.php">My Account</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -88,10 +91,27 @@
           <div class="card h-100">
             <h4 class="card-header">The Good</h4>
             <div class="card-body">
+              <div class="embed-responsive embed-responsive-4by3">
+              <iframe allowfullscreen webkitallowfullscreen width="640" height="480" frameborder="0" seamless src="https://p3d.in/e/uLS6U"></iframe>
+              </div>
               <p class="card-text">-Single-Color ABS<br />-Maximum size 200 x 200 x 400 mm<br />-1 year Beaver Family™ Service</p>
+              <?php  
+              $url = "https://bitpay.com/api/rates";
+
+              $json = file_get_contents($url);
+              $data = json_decode($json, TRUE);
+
+              $rate = $data[2]["rate"];    
+              $usd_price = 14.99;   
+              $bitcoin_price = round( $usd_price / $rate , 8 );
+              ?>
+
+             
+              -Price: $ <?=$usd_price ?> / BTC <?=$bitcoin_price ?>
+           
             </div>
             <div class="card-footer">
-              <a href="payment1.php" class="btn btn-primary">Buy it for $14.99</a>
+              <a href="payment1.php" class="btn btn-primary">Buy it Now</a>
             </div>
           </div>
         </div>
@@ -99,10 +119,27 @@
           <div class="card h-100">
             <h4 class="card-header">The Better</h4>
             <div class="card-body">
+              <div class="embed-responsive embed-responsive-4by3">
+              <iframe allowfullscreen webkitallowfullscreen width="640" height="480" frameborder="0" seamless src="https://p3d.in/e/yQ4Mq"></iframe>
+              </div>
               <p class="card-text">-Single-Color ABS<br />-Maximum size 400 x 300 x 400 mm<br />-3 year Beaver Family™ Service</p>
+              <?php  
+              $url = "https://bitpay.com/api/rates";
+
+              $json = file_get_contents($url);
+              $data = json_decode($json, TRUE);
+
+              $rate = $data[2]["rate"];    
+              $usd_price = 24.99;   
+              $bitcoin_price = round( $usd_price / $rate , 8 );
+              ?>
+
+             
+              -Price: $ <?=$usd_price ?> / BTC <?=$bitcoin_price ?>
+           
             </div>
             <div class="card-footer">
-              <a href="payment2.php" class="btn btn-primary">Buy it for $24.99</a>
+              <a href="payment2.php" class="btn btn-primary">Buy it Now</a>
             </div>
           </div>
         </div>
@@ -110,14 +147,34 @@
           <div class="card h-100">
             <h4 class="card-header">The Best</h4>
             <div class="card-body">
+              <div class="embed-responsive embed-responsive-4by3">
+              <iframe allowfullscreen webkitallowfullscreen width="640" height="480" frameborder="0" seamless src="https://p3d.in/e/pnzZ6"></iframe>
+              </div>
               <p class="card-text">-Multi-Color PLA<br />-Maximum size 600 x 400 x 400 mm<br />-5 year Beaver Family™ Service</p>
+              <?php  
+              $url = "https://bitpay.com/api/rates";
+
+              $json = file_get_contents($url);
+              $data = json_decode($json, TRUE);
+
+              $rate = $data[2]["rate"];    
+              $usd_price = 34.99;   
+              $bitcoin_price = round( $usd_price / $rate , 8 );
+              ?>
+
+            
+              -Price: $ <?=$usd_price ?> / BTC <?=$bitcoin_price ?>
+           
             </div>
             <div class="card-footer">
-              <a href="payment3.php" class="btn btn-primary">Buy it for $34.99</a>
+              <a href="payment3.php" class="btn btn-primary">Buy it Now</a>
             </div>
           </div>
         </div>
       </div>
+
+      <p class="m-0 text-center text-black"> *Bitcoin prices may change due to currency fluctuations</p>
+
 
  <img class="d-block w-100" src="images/Currency.JPG" alt="Italian Trulli">
  <br> <br> <br> 
