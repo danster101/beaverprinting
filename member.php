@@ -80,83 +80,61 @@
     <div class="container">
       
       <h1 class="my-4">
-        <small>Choose a product </small>
+        <div class="hero-image">
+          <img class="d-block w-300" src="images/member.jpg">
+          <div class="hero-text">
+            <h2>Welcome back, PLACEHOLDER !</h2>
+            <h6>Your Exclusive Member Homepage</h6>
+            <a href="index.html" class="btn btn-primary">Log Out</a>
+          </div>
+          <div>
 	     </h1>
-		   <img class="d-block w-100" src="images/Capture.JPG" alt="Italian Trulli">
 
       <br>
       <!-- Marketing Icons Section -->
       <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">The Good</h4>
+        <div class="col-lg-6 mb-6">
+          <div class="card h-300">
+            <h4 class="card-header">Past Orders</h4>
             <div class="card-body">
-              <p class="card-text">-Single-Color ABS<br />-Maximum size 200 x 200 x 400 mm<br />-1 year Beaver Family™ Service</p>
-            </div>
-            <div class="card-footer">
-              <a href="payment1.php" class="btn btn-primary">Buy it for $14.99</a>
+              <p class="card-text">
+                -Last Order: PLACEHOLDER<br />
+                -Price: PLACEHOLDER<br />
+                -Date Delivered: PLACEHOLDER
+            </p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">The Better</h4>
+        <div class="col-lg-6 mb-6">
+          <div class="card h-300">
+            <h4 class="card-header">Current Orders</h4>
             <div class="card-body">
-              <p class="card-text">-Single-Color ABS<br />-Maximum size 400 x 300 x 400 mm<br />-3 year Beaver Family™ Service</p>
-            </div>
-            <div class="card-footer">
-              <a href="payment2.php" class="btn btn-primary">Buy it for $24.99</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header">The Best</h4>
-            <div class="card-body">
-              <p class="card-text">-Multi-Color PLA<br />-Maximum size 600 x 400 x 400 mm<br />-5 year Beaver Family™ Service</p>
-            </div>
-            <div class="card-footer">
-              <a href="payment3.php" class="btn btn-primary">Buy it for $34.99</a>
+              <p class="card-text">
+                -Current Order: PLACEHOLDER<br />
+                -Price: PLACEHOLDER<br />
+                -Expected Delivered Date: PLACEHOLDER
+                </p>
             </div>
           </div>
         </div>
       </div>
-
- <img class="d-block w-100" src="images/Currency.JPG" alt="Italian Trulli">
- <br> <br> <br> 
-
-      <form action="converter.php" method="post">
-      <div style="text-align:center;">
-      <h1>Bitcoin Currency Converter</h1><br>
-        <label for="amount">Amount:</label>
-        <input type="text"name="amount" id="amount">
-
-        &nbsp;&nbsp;&nbsp;
-        <label for="currency">Currency:</label>
-        
-        <select name="currency" class="btn btn-primary" id="currency">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="CNY">CNY</option>
-          <option value="JPY">JPY</option>
-          <option value="SGD">SGD</option>
-          <option value="HKD">HKD</option>
-          <option value="CAD">CAD</option>
-          <option value="AUD">AUD</option>
-          <option value="NZD">NZD</option>
-          <option value="GBP">GBP</option>
-          <option value="DKK">DKK</option>
-          <option value="SEK">SEK</option>
-          <option value="BRL">BRL</option>
-          <option value="CHF">CHF</option>
-          <option value="RUB">RUB</option>
-          <option value="SLL">SLL</option>
-        </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" class="btn btn-primary" </a>
+      <br /><br />
+       <div class="row">
+        <div class="col-lg-12 mb-12">
+          <div class="card h-300">
+            <h4 class="card-header">My Account Information</h4>
+            <div class="card-body">
+              <p class="card-text">
+                PLACEHOLDER
+            </p>
+            </div>
+             <div class="card-footer">
+              <a href="payment1.php" class="btn btn-primary">Change My Account information</a>
+            </div>
+        </div>
       </div>
-      </form>
-       <br> <br> <br>
+      <br /> <br />
+
 
 	  
 
