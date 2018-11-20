@@ -139,7 +139,7 @@ EOT;
           $email_err = TRUE;
         }
         else {
-          $query = "INSERT INTO \"siteUsers\" {firstName, lastName, email, phone, address, city, state, zip, password} VALUES ('$firstName','$lastName', '$email', '$phone', '$address', '$city', '$state', '$zip', '$password')";
+          $query = "INSERT INTO \"siteUsers\" (\"firstName\", \"lastName\", email, phone, address, city, state, zip, password) VALUES ('$firstName','$lastName', '$email', '$phone', '$address', '$city', '$state', '$zip', '$password')";
           $result = pg_query($dbconn, $query);
           if(!$query){echo "failure on insert query";}
           $firstName = $lastName = $email = $password = $phone = $address = $city = $state = $zip = "";
@@ -307,6 +307,11 @@ EOT;
             <div id="success"></div>
             <!-- For success/fail messages -->
             <button type="submit" class="btn btn-primary" id="signUpButton">Sign Up</button>
+
+            <?php if (!empty($msg)) {
+              echo "<p>$msg</p>";
+            } ?>
+
           </form>
         </div>
 

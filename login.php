@@ -20,6 +20,49 @@
 
   <body>
 
+
+
+     <?php
+
+        $email_err = FALSE;
+        $message = $email = $password = "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $conn_string = "sslmode=require host=ec2-107-22-189-136.compute-1.amazonaws.com port=5432 dbname=d7blu4f8v68tqu user=ynwnecflnmfikq password=54a5bac6379cf5639d68c9a731d523edd65c930eaabc742a4c0df65d40826444";
+          $dbconn = pg_connect($conn_string);
+        
+        if(!$dbconn){echo "FAILURE";}
+
+        $email = pg_escape_string($dbconn, $_POST["email"]);
+        $password = pg_escape_string($dbconn, $_POST["password"]);
+
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $check_query = "SELECT * FROM \"siteUsers\" WHERE email = '{$email}'";
+        $check_result = pg_query($dbconn, $check_query);
+
+        $status = pg_result_status($check_result);
+
+        if($status == PGSQL_FATAL_ERROR)
+          echo "status fatal error";
+        if($status == PGSQL_BAD_RESPONSE)
+          echo "bad response";
+
+        $row = pg_fetch_row($check_result);
+        $pass = $row[8];
+
+        if((pg_num_rows($check_result) >= 1) && password_verify($password, $pass)){
+          $message = "Log in success!";
+        }
+        else {
+          $email_err = TRUE;
+          $message = "Either username or password does not match.";
+        }
+
+      }
+
+      ?>
+
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -73,22 +116,27 @@
       <!-- Login Form -->
       <div class="row">
         <div class="col-lg-8 mb-4">
-          <form name="sentMessage" id="contactForm" novalidate>
+          <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="loginForm" id="loginForm">
             <div class="control-group form-group">
               <div class="controls">
-                <label>Email Address:</label>
-                <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                <label for="email"><?php if($email_err){echo "";} ?>Email Address:</label>
+                <input type="email" class="form-control" id="email" name="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" title="Not a valid email." required value="<?php echo $email; ?>"/>
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>Password:</label>
-                <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password.">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" pattern="^.{8,}$" title="Minimum of 8 characters" required value="<?php echo $password; ?>"/>
               </div>
             </div>
             <div id="success"></div>
             <!-- For success/fail messages -->
             <button type="submit" class="btn btn-primary" id="loginButton">Login</button>
+
+            <?php if (!empty($message)) {
+              echo "<p>$message</p>";
+            } ?>
+
           </form>
         </div>
 
